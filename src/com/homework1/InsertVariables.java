@@ -1,16 +1,38 @@
 package com.homework1;
+
 public class InsertVariables {
-		
-	public String inVariable(String inString, String wantValue) {
-		String outString = "";
-		int[] arrOutInteger = { 0, 0, 0, 0 };
+	private String outString = "";
+	private int[] arrOutInteger = { 0, 0, 0, 0 };
+	private String inString;
+	private String wantValue;
+
+	public InsertVariables(String iString, String wValue) {
+		// TODO Auto-generated constructor stub
+		this.inString = iString;
+		this.wantValue = wValue;
+	}
+
+	public String getOutString() {
+		return outString;
+	}
+
+	public void setOutString(String outString) {
+		this.outString = outString;
+	}
+
+	public int[] getArrOutInteger() {
+		return arrOutInteger;
+	}
+
+	public void setArrOutInteger(int[] arrOutInteger) {
+		this.arrOutInteger = arrOutInteger;
+	}
+
+	public String inVariable() {
 
 		String[] arrOfString = inString.split(",", 4);
 
-		GetSetMethods getSetMethods = new GetSetMethods(wantValue, 1000000);
-		Recursive recursive = new Recursive(wantValue, 1000000);
-
-		System.out.println("test getWantValue : " + getSetMethods.getWantValue());
+		Recursive recursive = new Recursive(wantValue, "");
 
 		if (isInteger(arrOfString[0])) {
 
@@ -19,20 +41,17 @@ public class InsertVariables {
 			}
 
 			recursive.permute(arrOutInteger, 0);
-			System.out.println(getSetMethods.getConString());
+			
 
 		} else {
 
 			recursive.permute(arrOfString, 0);
-			System.out.println(getSetMethods.getConString());
 
 		}
 
 		return outString;
 
 	}
-
-
 
 	// are values the integer
 	public static boolean isInteger(String s) {

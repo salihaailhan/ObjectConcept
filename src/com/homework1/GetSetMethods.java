@@ -1,14 +1,15 @@
 package com.homework1;
 public class GetSetMethods {
 	private String wantValue = "";
-	private int nearValue = 0;
-	private String operators = "-*+";
 	private String conString = "";
+	private int nearValue = 1000000;
+	private String operators = "-*+";
 	
-	public GetSetMethods(String wValue, int nValue) {
+	
+	public GetSetMethods(String wValue, String cValue) {
 		// TODO Auto-generated constructor stub
 		this.wantValue = wValue;
-		this.nearValue = nValue;
+		this.conString = cValue;
 	}
 
 	public String getConString() {

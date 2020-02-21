@@ -10,16 +10,14 @@ public class HomeWork1Test {
 	}
 	
 	void test() {
-		InsertVariables insertVariables = new InsertVariables();
+
+		InsertVariables insertVariables = new InsertVariables("N,A,A,R", "NAR");
 		
 		try {
 			
-			String inString = "12,11,6,7"; // input values
-			String desString = "45"; // Desired output values
+			insertVariables.inVariable();
 			
-			System.out.println(insertVariables.inVariable(inString, desString));
 
-				
 		} catch (Exception e) {
 			System.out.println("!Note : Use comma between variables");
 		}		
