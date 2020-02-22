@@ -1,8 +1,28 @@
 package com.homework1;
 
 public class CalculateValues {
+	
 	public int calculate(int a, int b, String opt) {
 		int conc = 0;
+		switch (opt) {
+		case "*":
+			conc = a * b;
+			break;
+		case "+":
+			conc = a + b;
+			break;
+		case "-":
+			conc = a - b;
+			break;
+		default:
+			break;
+		}
+
+		return conc;
+	}
+	
+	public Double calculate(double a, double b, String opt) {
+		double conc = 0.0;
 		switch (opt) {
 		case "*":
 			conc = a * b;

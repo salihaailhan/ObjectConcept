@@ -2,7 +2,7 @@ package com.homework1;
 public class GetSetMethods {
 	private String wantValue = "";
 	private String conString = "";
-	private int nearValue = 1000000;
+	private double nearValue = 1000000;
 	private String operators = "-*+";
 	
 	
@@ -28,11 +28,11 @@ public class GetSetMethods {
 		return wantValue;
 	}
 
-	public void setNearValue(int nearValue) {
+	public void setNearValue(double nearValue) {
 		this.nearValue = nearValue;
 	}
 
-	public int getNearValue() {
+	public double getNearValue() {
 		return nearValue;
 	}
 
