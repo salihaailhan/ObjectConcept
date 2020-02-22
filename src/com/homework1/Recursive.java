@@ -1,7 +1,5 @@
 package com.homework1;
 
-import com.TestCase.Combination;
-
 public class Recursive extends GetSetMethods {
 
 	int countValue = 1;
@@ -9,19 +7,21 @@ public class Recursive extends GetSetMethods {
 	public Recursive(String wValue, String cValue) {
 		// TODO Auto-generated constructor stub
 		super(wValue, cValue);
+		
 
 	}
 
 	CalculateValues calculateValues = new CalculateValues();
+	Combination combination = new Combination(getWantValue(), getConString());
 
-	/*
+	/*******************************************************************************************
 	 * 
 	 * DOUBLE PERMUTATION
 	 * 
 	 * How to use :
-	 * int[] arr = {1, 2, 3, 4}; permuteInteger(arr, 0);
+	 * Double[] arr = {1.0, 2.5, 3.7, 4.5}; permute(arr, 0);
 	 * 
-	 */
+	 *******************************************************************************************/
 	public void permute(double[] arr, int i) {
 		
 		if (i == arr.length) {
@@ -37,9 +37,6 @@ public class Recursive extends GetSetMethods {
 			permute(arr, i + 1); // recurse call
 			swap(arr, i, j); // backtracking
 		}
-		
-		
-
 	}
 
 	public void swap(double[] arr, int i, int j) {
@@ -49,52 +46,16 @@ public class Recursive extends GetSetMethods {
 	}
 	
 	public void permuteString(String str, int l, int r, double[] arr) {
+		
 
 		if (l == r) {
 
 			// if values are integer implement double
 			String[] splitString = str.split("");
 			
-			//Combination.printCombination(arr, arr.length, 4);
+			combination.printCombination(arr, arr.length, 4, splitString);
 			
-			double conc = calculateValues.calculate(calculateValues.calculate(calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2], splitString[1]), arr[3], splitString[2]);
-			
-			String strConc = "(((" + arr[0] + " " + splitString[0] + " " + arr[1] + ")" + " " + splitString[1] + " "
-					+ arr[2] + ")" + " " + splitString[2] + " " + arr[3] + ")" + ")" + " > " + "(("
-					+ calculateValues.calculate(arr[0], arr[1], splitString[0]) + " " + splitString[1] + " " + arr[2]
-					+ ")" + " " + splitString[2] + " " + arr[3] + ")" + " > " + "("
-					+ calculateValues.calculate(
-							calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2], splitString[1])
-					+ " " + splitString[2] + " " + arr[3] + ")" + " > "
-					+ calculateValues.calculate(
-							calculateValues.calculate(calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2],
-									splitString[1]),
-							arr[3], splitString[2]);
 
-			if (conc == Double.parseDouble(getWantValue())) {
-
-				setConString(strConc);
-
-			} else {
-				if (Double.parseDouble(getWantValue()) - conc < 0) { // if nearest values less zero
-					if (((Double.parseDouble(getWantValue()) - conc) * -1)
-							+ ((Double.parseDouble(getWantValue()) - conc) * -1) < getNearValue()) {
-						setNearValue(((Double.parseDouble(getWantValue()) - conc) * -1)
-								+ ((Double.parseDouble(getWantValue()) - conc) * -1));
-						setConString(strConc);
-					}
-				} else {
-					if (Double.parseDouble(getWantValue()) - conc < getNearValue()) {
-						setNearValue(Double.parseDouble(getWantValue()) - conc);
-						setConString(strConc);
-					}
-				}
-			}
-			System.out.println(getConString());
-			countValue++;
-			if (countValue == 144) {
-				System.out.println(getConString());
-			}
 		} else {
 			for (int i = l; i <= r; i++) {
 				str = swapString(str, l, i);
@@ -105,16 +66,20 @@ public class Recursive extends GetSetMethods {
 		}
 
 	}
+	
+	public void displayScope() {
+		System.out.println(getConString());
+	}
 	/*****************************************************************************************/
 	
-	/*
+	/*****************************************************************************************
 	 * 
 	 * INTEGER PERMUTATION
 	 * 
 	 * How to use :
-	 * int[] arr = {1, 2, 3, 4}; permuteInteger(arr, 0);
+	 * int[] arr = {1, 2, 3, 4}; permute(arr, 0);
 	 * 
-	 */
+	 *****************************************************************************************/
 	public void permute(int[] arr, int i) {
 
 		if (i == arr.length) {
@@ -137,49 +102,16 @@ public class Recursive extends GetSetMethods {
 	}
 	
 	public void permuteString(String str, int l, int r, int[] arr) {
-
+		
+		
+		
 		if (l == r) {
 
 			// if values are integer implement integer
 			String[] splitString = str.split("");
 			
-			int conc = calculateValues.calculate(calculateValues.calculate(calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2], splitString[1]), arr[3], splitString[2]);
+			combination.printCombination(arr, arr.length, 4, splitString);
 			
-			String strConc = "(((" + arr[0] + " " + splitString[0] + " " + arr[1] + ")" + " " + splitString[1] + " "
-					+ arr[2] + ")" + " " + splitString[2] + " " + arr[3] + ")" + ")" + " > " + "(("
-					+ calculateValues.calculate(arr[0], arr[1], splitString[0]) + " " + splitString[1] + " " + arr[2]
-					+ ")" + " " + splitString[2] + " " + arr[3] + ")" + " > " + "("
-					+ calculateValues.calculate(
-							calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2], splitString[1])
-					+ " " + splitString[2] + " " + arr[3] + ")" + " > "
-					+ calculateValues.calculate(
-							calculateValues.calculate(calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2],
-									splitString[1]),
-							arr[3], splitString[2]);
-
-			if (conc == Integer.parseInt(getWantValue())) {
-
-				setConString(strConc);
-
-			} else {
-				if (Integer.parseInt(getWantValue()) - conc < 0) { // if nearest values less zero
-					if (((Integer.parseInt(getWantValue()) - conc) * -1)
-							+ ((Integer.parseInt(getWantValue()) - conc) * -1) < getNearValue()) {
-						setNearValue(((Integer.parseInt(getWantValue()) - conc) * -1)
-								+ ((Integer.parseInt(getWantValue()) - conc) * -1));
-						setConString(strConc);
-					}
-				} else {
-					if (Integer.parseInt(getWantValue()) - conc < getNearValue()) {
-						setNearValue(Integer.parseInt(getWantValue()) - conc);
-						setConString(strConc);
-					}
-				}
-			}
-			countValue++;
-			if (countValue == 144) {
-				System.out.println(getConString());
-			}
 		} else {
 			for (int i = l; i <= r; i++) {
 				str = swapString(str, l, i);
@@ -192,11 +124,11 @@ public class Recursive extends GetSetMethods {
 	}
 	/*****************************************************************************************/
 
-	/*
+	/*****************************************************************************************
 	 * 
 	 * STRING PERMUTATION
 	 * 
-	 */
+	 *****************************************************************************************/
 	public void permute(String[] arr, int i) {
 
 		if (i == arr.length) {
@@ -224,33 +156,8 @@ public class Recursive extends GetSetMethods {
 
 			String[] splitString = str.split("");
 
-			String conc = calculateValues.calculate(calculateValues
-					.calculate(calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2], splitString[1]),
-					arr[3], splitString[2]);
-			String strConc = "(((" + arr[0] + " " + splitString[0] + " " + arr[1] + ")" + " " + splitString[1] + " "
-					+ arr[2] + ")" + " " + splitString[2] + " " + arr[3] + ")" + ")" + " > " + "(("
-					+ calculateValues.calculate(arr[0], arr[1], splitString[0]) + " " + splitString[1] + " " + arr[2]
-					+ ")" + " " + splitString[2] + " " + arr[3] + ")" + " > " + "("
-					+ calculateValues.calculate(
-							calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2], splitString[1])
-					+ " " + splitString[2] + " " + arr[3] + ")" + " > "
-					+ calculateValues.calculate(
-							calculateValues.calculate(calculateValues.calculate(arr[0], arr[1], splitString[0]), arr[2],
-									splitString[1]),
-							arr[3], splitString[2]);
+			combination.printCombination(arr, arr.length, 4, splitString);
 
-			if (stringCompare(conc, getWantValue()) == 0) {
-				setConString(strConc);
-			} else {
-				if (stringCompare(conc, getWantValue()) < getNearValue()) {
-					setNearValue(stringCompare(conc, getWantValue()));
-					setConString(strConc);
-				}
-			}
-			countValue++;
-			if (countValue == 144) {
-				System.out.println(getConString());
-			}
 		} else {
 			for (int i = l; i <= r; i++) {
 				str = swapString(str, l, i);
@@ -272,34 +179,5 @@ public class Recursive extends GetSetMethods {
 	}
 	
 	
-	// This method compares two strings
-	// lexicographically without using
-	// library functions
-	public static int stringCompare(String str1, String str2) {
 
-		int l1 = str1.length();
-		int l2 = str2.length();
-		int lmin = Math.min(l1, l2);
-
-		for (int i = 0; i < lmin; i++) {
-			int str1_ch = (int) str1.charAt(i);
-			int str2_ch = (int) str2.charAt(i);
-
-			if (str1_ch != str2_ch) {
-				return str1_ch - str2_ch;
-			}
-		}
-
-		// Edge case for strings like
-		// String 1="Geeks" and String 2="Geeksforgeeks"
-		if (l1 != l2) {
-			return l1 - l2;
-		}
-
-		// If none of the above conditions is true,
-		// it implies both the strings are equal
-		else {
-			return 0;
-		}
-	}
 }

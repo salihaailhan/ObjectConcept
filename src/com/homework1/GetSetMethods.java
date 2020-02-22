@@ -1,7 +1,7 @@
 package com.homework1;
 public class GetSetMethods {
 	private String wantValue = "";
-	private String conString = "";
+	private static String conString = "";
 	private double nearValue = 1000000;
 	private String operators = "-*+";
 	
@@ -9,15 +9,15 @@ public class GetSetMethods {
 	public GetSetMethods(String wValue, String cValue) {
 		// TODO Auto-generated constructor stub
 		this.wantValue = wValue;
-		this.conString = cValue;
+		conString = cValue;
 	}
 
 	public String getConString() {
 		return conString;
 	}
 
-	public void setConString(String conString) {
-		this.conString = conString;
+	public void setConString(String cString) {
+		conString = cString;
 	}
 
 	public void setWantValue(String wantValue) {
