@@ -28,8 +28,6 @@ public class HomeWork1Test {
 			doubleVariables.inVariable(new double[] {12.0,11.0,6.0,8.0,7.0});
 			System.out.println(getSetMethods.getConString());
 			
-			
-
 		} catch (Exception e) {
 			System.out.println("!Note : Use comma between variables");
 		}
