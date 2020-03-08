@@ -10,15 +10,20 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class TestCase {
+	
 	static Logger logger = Logger.getLogger(TestCase.class.getName());
+	
 	public static void main(String[] args) {
+		
 		try {
             LogManager.getLogManager().readConfiguration(new FileInputStream("mylogging.properties"));
         } catch (SecurityException | IOException e1) {
             e1.printStackTrace();
         }
+		
         logger.setLevel(Level.FINE);
         logger.addHandler(new ConsoleHandler());
+        
         //adding custom handler
         logger.addHandler(new MyHandler());
         try {

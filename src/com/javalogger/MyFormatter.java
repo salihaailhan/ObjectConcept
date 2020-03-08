@@ -8,20 +8,23 @@ public class MyFormatter extends Formatter {
 
 	@Override
 	public String format(LogRecord logRecord) {
-		/*
-		 * String str = "<record>" + "<date>" + new Date() + "</date>" + "<millis>" +
-		 * new Date(logRecord.getMillis()) + "</millis>" + "<sequence>" + 996 +
-		 * "</sequence>" + "<logger> com.javalogger.TestCase </logger>" + "<class>" +
-		 * logRecord.getSourceClassName() + "</class>" + "<method>" +
-		 * logRecord.getSourceMethodName() + "</method>" + "<thread>" +
-		 * logRecord.getThreadID() + "</thread>" + "<message>" + logRecord.getMessage()
-		 * + "</message>" + "</record>";
-		 */
+		
+		  String str = "<record>" + 
+				  			"<date>" + new Date() + "</date>" + 
+				  			"<logger> com.javalogger.TestCase </logger>" + 
+				  			"<class>" + logRecord.getSourceClassName() + "</class>" + 
+				  			"<method>" + logRecord.getSourceMethodName() + "</method>" + 
+				  			"<thread>" + logRecord.getThreadID() + "</thread>" + 
+				  			"<message>" + logRecord.getMessage() + "</message>" + 
+				  		"</record>";
+		 
 
 		
-		  String str = logRecord.getThreadID() + "::" + logRecord.getSourceClassName()
-		  + "::" + logRecord.getSourceMethodName() + "::" + new
-		  Date(logRecord.getMillis()) + "::" + logRecord.getMessage() + "\n";
+		/*
+		 * String str = logRecord.getThreadID() + "::" + logRecord.getSourceClassName()
+		 * + "::" + logRecord.getSourceMethodName() + "::" + new
+		 * Date(logRecord.getMillis()) + "::" + logRecord.getMessage() + "\n";
+		 */
 		 
 
 		return str;

@@ -8,7 +8,7 @@ public class TestCase {
 	static Restaurant restaurant = new Restaurant();
 
 	public static void main(String[] args) {
-		Student student = new Student("Gürkay", "Nar", "AYBU");
+		Student student = new Student("Gürkay", "BAŞYİĞİT", "AYBU");
 		student.eat(restaurant);
 		
 		Kitchen kitchen = new Kitchen();
