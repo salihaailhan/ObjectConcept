@@ -30,6 +30,7 @@ public class TestCase {
             //FileHandler file name with max size and number of log files limit
             Handler fileHandler = new FileHandler("/var/tmp/logger.log", 2000, 5);
             fileHandler.setFormatter(new MyFormatter());
+            
             //setting custom filter for FileHandler
             fileHandler.setFilter(new MyFilter());
             logger.addHandler(fileHandler);
