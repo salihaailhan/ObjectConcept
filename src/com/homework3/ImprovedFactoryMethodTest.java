@@ -108,6 +108,7 @@ class InstitutionalPlan extends AbsImprovedPlanFactory {
  * Traditional Plan Factory
  ******************************************************/
 abstract class Plan {
+	
 	abstract double getRate();
 	
 	final public void calculateBill(int units) {
@@ -116,7 +117,9 @@ abstract class Plan {
 }
 
 class TraditionalPlanFactory {
+	
 	public Plan getPlan(String planType) {
+		
 		if(planType != null) {
 			switch(planType.toUpperCase()) {
 			case "DOMESTICPLAN": return new DomesticPlan();
@@ -129,6 +132,7 @@ class TraditionalPlanFactory {
 }
 
 class DomesticPlan extends Plan {
+	
 	@Override
 	public double getRate() {
 		return 3.50;
@@ -136,6 +140,7 @@ class DomesticPlan extends Plan {
 }
 
 class CommercialPlan extends Plan {
+	
 	@Override
 	public double getRate() {
 		return 7.50;
@@ -143,6 +148,7 @@ class CommercialPlan extends Plan {
 }
 
 class InstitutionalPlan extends Plan {
+	
 	@Override
 	public double getRate() {
 		return 5.50;
