@@ -52,26 +52,51 @@ public class ImprovedFactoryMethodTest {
 }
 
 /******************************************************
- * Gurkay Improved Plan Factory
+ * 14050162001 Gürkay BAŞYİĞİT Improved Plan Factory
  ******************************************************/
-abstract class absImpPlan extends Plan {
-	abstract double get();
-}
+class ImprovedPlanFactory extends TraditionalPlanFactory{
 
-class ImprovedPlanFactory extends absImpPlan {
+	static class DomesticPlan extends Plan {
 
-	@Override
-	double get() {
-		// TODO Auto-generated method stub
-		return 0;
+		public static Plan get() {
+
+			return new DomesticPlan();
+		}
+
+		@Override
+		public double getRate() {
+			return 3.50;
+		}
+
 	}
+	
+	static class CommercialPlan extends Plan {
 
-	@Override
-	double getRate() {
-		// TODO Auto-generated method stub
-		return 0;
+		public static Plan get() {
+
+			return new CommercialPlan();
+		}
+
+		@Override
+		public double getRate() {
+			return 7.50;
+		}
+
 	}
+	
+	static class InstitutionalPlan extends Plan {
 
+		public static Plan get() {
+
+			return new InstitutionalPlan();
+		}
+
+		@Override
+		public double getRate() {
+			return 5.50;
+		}
+
+	}
 }
 
 /******************************************************
