@@ -52,52 +52,76 @@ public class ImprovedFactoryMethodTest {
 }
 
 /******************************************************
- * 14050162001 Gürkay BAŞYİĞİT Improved Plan Factory
+ * 14050162001 Gurkay BASYIGIT Improved Plan Factory
  ******************************************************/
-class ImprovedPlanFactory extends TraditionalPlanFactory{
-
-	static class DomesticPlan extends Plan {
-
-		public static Plan get() {
-
-			return new DomesticPlan();
-		}
-
-		@Override
-		public double getRate() {
-			return 3.50;
-		}
-
-	}
-	
-	static class CommercialPlan extends Plan {
-
-		public static Plan get() {
-
-			return new CommercialPlan();
-		}
-
-		@Override
-		public double getRate() {
-			return 7.50;
-		}
-
-	}
-	
-	static class InstitutionalPlan extends Plan {
-
-		public static Plan get() {
-
-			return new InstitutionalPlan();
-		}
-
-		@Override
-		public double getRate() {
-			return 5.50;
-		}
-
-	}
+interface InterfaceFactory{
+	public Plan get();
 }
+
+enum ImprovedPlanFactory implements InterfaceFactory {
+	
+	DomesticPlan {
+		@Override
+		public Plan get() {
+			// TODO Auto-generated method stub
+			return new DomesticPlan();
+		}	
+	}, 
+	
+	CommercialPlan {
+		@Override
+		public Plan get() {
+			// TODO Auto-generated method stub
+			return new CommercialPlan();
+		}	
+	}, 
+	InstitutionalPlan {
+		@Override
+		public Plan get() {
+			// TODO Auto-generated method stub
+			return new InstitutionalPlan();
+		}		
+	};
+}
+
+/*
+ * class ImprovedPlanFactory extends TraditionalPlanFactory {
+ * 
+ * 
+ * 
+ * static class DomesticPlan extends Plan {
+ * 
+ * public static Plan get() {
+ * 
+ * return new DomesticPlan(); }
+ * 
+ * @Override public double getRate() { return 3.50; }
+ * 
+ * }
+ * 
+ * static class CommercialPlan extends Plan {
+ * 
+ * public static Plan get() {
+ * 
+ * return new CommercialPlan(); }
+ * 
+ * @Override public double getRate() { return 7.50; }
+ * 
+ * }
+ * 
+ * static class InstitutionalPlan extends Plan {
+ * 
+ * public static Plan get() {
+ * 
+ * return new InstitutionalPlan(); }
+ * 
+ * @Override public double getRate() { return 5.50; }
+ * 
+ * }
+ * 
+ * }
+ */
+
 
 /******************************************************
  * Traditional Plan Factory
