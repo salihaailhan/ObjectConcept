@@ -23,7 +23,22 @@ public class HTMLBuilderTest {
 }
 
 class HtmlBuilder {
+	/****************************************************************
+	 * 14050162001 Gurkay BASYIGIT
+	 ****************************************************************/
+	private final String beginHTML = "<!DOCTYPE html><html><body>";
+	private final String endHTML = "</body></html>";
 	
-	// student code ...
+	public HtmlBuilder() {
+		// TODO Auto-generated constructor stub
+		
+	}
+
+	public Object italic() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 }
