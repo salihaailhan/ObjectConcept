@@ -56,13 +56,13 @@ class HtmlBuilder {
 	}
 	
 	public HtmlBuilder addTable(Object[][] list) {
-		this.text += "<TABLE>";
+		this.text += "<TABLE BORDER=\"2\">";
 		for(int i=0; i < list.length; i++) {
 			this.text += "<TR>";
-			for(int j=0; i < list[i].length; i++) {
+			for(int j=0; j < list[i].length; j++) {
 				this.text += "<TD>" + list[i][j] + "</TD>";	
 			}
-			this.text += "</TR";
+			this.text += "</TR>";
 		}
 		this.text += "</TABLE>";
 		return this;
@@ -78,9 +78,9 @@ class HtmlBuilder {
 	}
 	
 	public HtmlBuilder addUnorderedList(Object[] list) {
-		this.text += "<OL type=\"disc\">";
+		this.text += "<OL>";
 		for(int i=0; i < list.length; i++) {
-			this.text += "<LI>" + list[i];
+			this.text += "<LI type=\"disc\">" + list[i];
 		}
 		this.text += "</OL>";
 		return this;
