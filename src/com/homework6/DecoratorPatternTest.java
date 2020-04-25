@@ -63,6 +63,7 @@ interface Image {
 
 // Concrete Component
 class ColorImage implements Image {
+	
 	private BufferedImage image;
 	
 	ColorImage(int width, int height) {		
@@ -83,18 +84,67 @@ class ColorImage implements Image {
 	@Override
 	public BufferedImage getImage() {
 		// student code
+		return image;
 	}
 }
 
 // Decorator
 // student code for ImageDecorator class
+abstract class ImageDecorator implements Image {
+	
+	private Image image;
+	
+	ImageDecorator(Image image) {
+		
+		this.image = image;
+	}
+	
+	@Override
+	public BufferedImage getImage() {
 
+		return image.getImage();
+	}
+}
 // Concrete Decorator 1
 // student code for ImageGrayScaleDecorator class
+class ImageGrayScaleDecorator extends ImageDecorator {
+	
+	private BufferedImage image;
 
+	ImageGrayScaleDecorator(Image colorImage, Rectangle rect) {
+		super(colorImage);
+
+		image = ImageUtilities.convertToGrayScale(super.getImage(), rect);
+	}
+	
+	public BufferedImage getImage() {
+		
+		return image;
+	}
+
+}
 // Concrete Decorator 2
 // student code for ImageMosaicDecorator class
+class ImageMosaicDecorator extends ImageDecorator {
+	
+	private BufferedImage image;
+	
+	ImageMosaicDecorator(Image colorImage, int gridSize) {
+		super(colorImage);
+	
+		image = ImageUtilities.addMosaic(super.getImage(), gridSize);
+	}
+	
+	ImageMosaicDecorator(Image colorImage, Rectangle rect, int gridSize) {
+		super(colorImage);
+		
+		image = ImageUtilities.addMosaic(super.getImage(), rect, gridSize);
+	}
 
+	public BufferedImage getImage() {
+		return image;
+	}
+}
 
 // Image utilities
 class ImageUtilities {
