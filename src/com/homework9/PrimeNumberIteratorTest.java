@@ -41,11 +41,11 @@ class PrimeNumbers implements Iterable<Long> {
 	// student code
 	private Long firstNumber = (long) 1;
 	final Long lastNumber;
-	
+
 	PrimeNumbers(int lastNumber) {
 		this.lastNumber = (long) lastNumber;
 	}
-	
+
 	boolean isPrime(int n) {
 		// Corner case
 		if (n <= 1)
@@ -61,24 +61,32 @@ class PrimeNumbers implements Iterable<Long> {
 
 	@Override
 	public Iterator<Long> iterator() {
-		// TODO Auto-generated method stub
 		return new NumbersIterator();
 	}
 
 	class NumbersIterator implements Iterator<Long> {
 		@Override
 		public Long next() {
-			if(isPrime(firstNumber)) {
-				
-			}
+
 			Long number = firstNumber;
 			firstNumber++;
 			return number;
+
 		}
 
 		@Override
 		public boolean hasNext() {
-			return (firstNumber <= lastNumber);
+			
+			if(!isPrime(firstNumber.intValue())) {
+				firstNumber++;
+			}
+			
+			if (firstNumber <= lastNumber) {
+				return true;
+			} else {
+				firstNumber = (long) 1;
+			}
+			return false;
 		}
 	}
 
