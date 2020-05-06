@@ -62,6 +62,25 @@ abstract class StudentRegistration {
 	
 }
 
+class DatabaseConnection {
+	
+	DatabaseConnection(String connectionString, String username, String password) {
+		System.out.println("Connect to database using " + connectionString + ", Username = " + username + ", Password = " + password);
+	}
+	
+	void beginTransaction() {
+		System.out.println("Begin Transaction");
+	}
+
+	void commitTransaction() {
+		System.out.println("Commit Transaction");
+	}
+
+	void rollbackTransaction() {
+		System.out.println("Rollback Transaction");
+	}
+}
+
 class DatabaseBasedStudentRegistration extends StudentRegistration {
 	private final DatabaseConnection connection;
 	
@@ -135,26 +154,6 @@ class Student extends Person {
 		return super.toString() + ", ID = " + studentId;
 	}	
 }
-
-class DatabaseConnection {
-	
-	DatabaseConnection(String connectionString, String username, String password) {
-		System.out.println("Connect to database using " + connectionString + ", Username = " + username + ", Password = " + password);
-	}
-	
-	void beginTransaction() {
-		System.out.println("Begin Transaction");
-	}
-
-	void commitTransaction() {
-		System.out.println("Commit Transaction");
-	}
-
-	void rollbackTransaction() {
-		System.out.println("Rollback Transaction");
-	}
-}
-
 
 // Videos:
 // https://www.coursera.org/lecture/design-patterns/2-2-1-template-method-pattern-mXu6R

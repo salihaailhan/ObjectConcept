@@ -1,8 +1,8 @@
-package com.homework8;
+package com.templatepattern;
 
 import java.util.*;
 
-public class TestClass {
+public class TemplatePatternTest {
 
 	public static void main(String[] args) {
 		// world
@@ -32,7 +32,7 @@ public class TestClass {
 		System.out.println();
 		
 		System.out.println("/************************ TEST ***********************/");
-
+		
 		Calculate calRandomMovement = new RandomMovement(world, entry, exit, maximumMovementCount);
 		calRandomMovement.makeCalculate();
 		
@@ -44,20 +44,6 @@ public class TestClass {
 }
 
 abstract class Calculate {
-	World world;
-	Location entry;
-	Location exit;
-	int maximumMovementCount;
-	int moveCount = -1;
-	double explorationProbability = 0.2;
-	
-	public Calculate(World world, Location entry, Location exit, int maximumMovementCount) {
-		this.world = world;
-		this.entry = entry;
-		this.exit = exit;
-		this.maximumMovementCount = maximumMovementCount;		
-	}
-	
 	void makeCalculate() {
 		pairCalculate();
 		pairMoveCount();
@@ -68,13 +54,23 @@ abstract class Calculate {
 }
 
 class RandomMovement extends Calculate {
-	
-	public RandomMovement(World world, Location entry, Location exit, int maximumMovementCount) {
-		super(world, entry, exit, maximumMovementCount);
+	private World world;
+	private Location entry;
+	private Location exit;
+	private int maximumMovementCount;
+	private int moveCount = -1;
+
+	RandomMovement(World world, Location entry, Location exit, int maximumMovementCount) {
+		this.world = world;
+		this.entry = entry;
+		this.exit = exit;
+		this.maximumMovementCount = maximumMovementCount;
 	}
 
+	
 	@Override
 	void pairMoveCount() {
+		// TODO Auto-generated method stub
 		if(moveCount >= 0) {
 			System.out.println("Exit is founded with findPathWithRandomMovement strategy in " + moveCount + " movements.");	
 		} else {
@@ -84,6 +80,7 @@ class RandomMovement extends Calculate {
 
 	@Override
 	void pairCalculate() {
+		// TODO Auto-generated method stub
 		Random rand = new Random(System.currentTimeMillis());
 		Location position = new Location(entry);
 		for (int k = 0; k < maximumMovementCount; k++) {
@@ -103,13 +100,23 @@ class RandomMovement extends Calculate {
 }
 
 class HeuristicMovement extends Calculate {
-
-	public HeuristicMovement(World world, Location entry, Location exit, int maximumMovementCount) {
-		super(world, entry, exit, maximumMovementCount);
+	private World world;
+	private Location entry;
+	private Location exit;
+	private int maximumMovementCount;
+	private int moveCount = -1;
+	private double explorationProbability = 0.2;
+	
+	HeuristicMovement(World world, Location entry, Location exit, int maximumMovementCount) {
+		this.world = world;
+		this.entry = entry;
+		this.exit = exit;
+		this.maximumMovementCount = maximumMovementCount;		
 	}
 
 	@Override
 	void pairMoveCount() {
+		// TODO Auto-generated method stub
 		if(moveCount >= 0) {
 			System.out.println("Exit is founded with findPathWithRandomAndHeuristicMovement strategy in " + moveCount + " movements.");
 		} else {
@@ -119,6 +126,7 @@ class HeuristicMovement extends Calculate {
 
 	@Override
 	void pairCalculate() {
+		// TODO Auto-generated method stub
 		Random rand = new Random(System.currentTimeMillis());
 		Location position = new Location(entry);
 		for (int k = 0; k < maximumMovementCount; k++) {
@@ -236,4 +244,3 @@ class World {
 		return gridWorld;
 	}
 }
-
