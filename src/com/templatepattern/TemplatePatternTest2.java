@@ -21,6 +21,28 @@ public class TemplatePatternTest2 {
 		tea.addCondiments();
 		System.out.println("/********* Tea prepareRecipe() *********/");
 		tea.prepareRecipe();
+		
+//		OUTPUT:
+//			/********* Coffee *********/
+//			Boiling Water
+//			Dripping coffee though filter
+//			Pouring into Cup
+//			Adding Sugar and Milk
+//			/********* Coffee prepareRecipe() *********/
+//			Boiling Water
+//			Dripping coffee though filter
+//			Pouring into Cup
+//			Adding Sugar and Milk
+//			/********* Tea *********/
+//			Boiling Water
+//			Steeping the tea
+//			Pouring into Cup
+//			Adding Lemon
+//			/********* Tea prepareRecipe() *********/
+//			Boiling Water
+//			Steeping the tea
+//			Pouring into Cup
+//			Adding Lemon
 	}
 }
 

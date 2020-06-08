@@ -15,8 +15,10 @@ public class PrimeNumberIteratorTest {
 			System.out.println(primeNumber);
 		}
 		/*
-		 * Iterator<Long> iter = primeNumbers.iterator(); while (iter.hasNext()) {
-		 * System.out.println(iter.next()); }
+		 * Iterator<Long> iter = primeNumbers.iterator(); 
+		 * while (iter.hasNext()) {
+		 * 		System.out.println(iter.next()); 
+		 * }
 		 */
 		long elapsedTime1 = System.nanoTime() - startTime;
 		System.out.println();
@@ -91,29 +93,3 @@ class PrimeNumbers implements Iterable<Long> {
 	}
 
 }
-
-/*
- * First iteration --------------- 2 3 5 7 11
- * 
- * .
- * 
- * .
- * 
- * .
- * 
- * 7901 7907 7919
- * 
- * Second iteration ---------------- 2 3 5 7 11 13
- * 
- * .
- * 
- * .
- * 
- * .
- * 
- * 7907 7919
- * 
- * Execution time for the first iteration = 0.0391174 seconds Execution time for
- * the second iteration = 0.0055543 seconds
- * 
- */
