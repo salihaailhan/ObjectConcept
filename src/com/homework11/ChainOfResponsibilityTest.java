@@ -3,13 +3,10 @@ package com.homework11;
 import java.util.*;
 import java.util.regex.*;
 
-import com.chainpattern.Chain;
-import com.chainpattern.Numbers;
-
 public class ChainOfResponsibilityTest {
 
 	public static void main(String[] args) {
-		
+
 //			Input text:
 //			-----------
 //			I want to increase my grade using makeup homeworks in the Design Patters course
@@ -26,7 +23,7 @@ public class ChainOfResponsibilityTest {
 //			FilterSmallWords    ->    increase grade using makeup homeworks Design Patters course 
 //			TranslateToTurkish	->    null
 //			ReverseWords    	->    course Patters Design the in homeworks makeup using grade my increase to want I 
-		
+
 		String text = "I want to increase my grade using makeup homeworks in the Design Patters course";
 		System.out.println("Input text:");
 		System.out.println("-----------");
@@ -37,15 +34,16 @@ public class ChainOfResponsibilityTest {
 		chain.setNextChain(new CapitalizeCase()).setNextChain(new ReverseWords());
 
 		/*
-		 * // below code does the same things with above one.your code should work with both approaches
-		 *  
-		 * TextProcessingHandler chainFirst 	= new FilterSmallWords(5);
-		 * TextProcessingHandler chainSecond 	= new CapitalizeCase();
-		 * TextProcessingHandler chainThird 	= new ReverseWords();
-		 * chainFirst.setNextChain(chainSecond); 
-		 * chainSecond.setNextChain(chainThird);
-		 * 
-		 */
+		 * // below code does the same things with above one.your code should work with
+		 * both approaches
+		 */ 
+//		 	TextProcessingHandler chain = new FilterSmallWords(5);
+//		 	TextProcessingHandler chainSecond = new CapitalizeCase();
+//		 	TextProcessingHandler chainThird = new ReverseWords();
+//		 	chain.setNextChain(chainSecond); 
+//		 	chainSecond.setNextChain(chainThird);
+		 
+		 	
 
 		System.out.println("Chain of Responsibility:");
 		System.out.println("------------------------");
@@ -75,10 +73,12 @@ abstract class TextProcessingHandler {
 		// student code ...
 		this.request = request;
 		this.text = text;
+		return " bla bla";
 	}
 
 	// student code for setNextChain method
 	abstract void setNextChain(TextProcessingHandler nextChain);
+
 	abstract void calculate(TextProcessingHandler request);
 
 	void showChain() {
@@ -125,7 +125,7 @@ abstract class WordFilterers extends TextProcessingHandler {
 class FilterSmallWords extends TextProcessingHandler {
 	private TextProcessingHandler nextInChain;
 	private int numberOfWords;
-	
+
 	public FilterSmallWords(int numberOfWords) {
 		this.numberOfWords = numberOfWords;
 	}
@@ -149,10 +149,11 @@ class FilterSmallWords extends TextProcessingHandler {
 		}
 	}
 }
+
 // student code for CapitalizeCase class
 class CapitalizeCase extends TextProcessingHandler {
 	private TextProcessingHandler nextInChain;
-	
+
 	public void setNextChain(TextProcessingHandler nextChain) {
 
 		nextInChain = nextChain;
@@ -172,10 +173,11 @@ class CapitalizeCase extends TextProcessingHandler {
 		}
 	}
 }
+
 // student code for ReverseWords class
 class ReverseWords extends TextProcessingHandler {
 	private TextProcessingHandler nextInChain;
-	
+
 	public void setNextChain(TextProcessingHandler nextChain) {
 
 		nextInChain = nextChain;
@@ -198,7 +200,7 @@ class ReverseWords extends TextProcessingHandler {
 
 class TranslateToTurkish extends TextProcessingHandler {
 	private TextProcessingHandler nextInChain;
-	
+
 	public void setNextChain(TextProcessingHandler nextChain) {
 
 		nextInChain = nextChain;
