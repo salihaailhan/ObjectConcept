@@ -30,18 +30,21 @@ public class ChainOfResponsibilityTest {
 		System.out.println(text);
 		System.out.println("\n");
 
-		TextProcessingHandler chain = new FilterSmallWords(5);
-		chain.setNextChain(new CapitalizeCase()).setNextChain(new ReverseWords());
+//		TextProcessingHandler chain = new FilterSmallWords(5);
+//		chain.setNextChain(new CapitalizeCase()).setNextChain(new ReverseWords());
 
 		/*
 		 * // below code does the same things with above one.your code should work with
 		 * both approaches
 		 */ 
-//		 	TextProcessingHandler chain = new FilterSmallWords(5);
-//		 	TextProcessingHandler chainSecond = new CapitalizeCase();
-//		 	TextProcessingHandler chainThird = new ReverseWords();
-//		 	chain.setNextChain(chainSecond); 
-//		 	chainSecond.setNextChain(chainThird);
+		 	TextProcessingHandler chain = new FilterSmallWords(5);
+		 	TextProcessingHandler chainSecond = new CapitalizeCase();
+		 	TextProcessingHandler chainThird = new ReverseWords();
+		 	TextProcessingHandler chainFour = new TranslateToTurkish();
+		 	chain.setNextChain(chainSecond); 
+		 	chainSecond.setNextChain(chainThird);
+		 	chainThird.setNextChain(chainFour);
+		 	
 		 
 		 	
 
@@ -56,6 +59,8 @@ public class ChainOfResponsibilityTest {
 		sampleExecution(chain, "FilterSmallWords", text);
 		sampleExecution(chain, "TranslateToTurkish", text);
 		sampleExecution(chain, "ReverseWords", text);
+			
+
 	}
 
 	static void sampleExecution(TextProcessingHandler chain, String request, String text) {
@@ -66,40 +71,39 @@ public class ChainOfResponsibilityTest {
 
 abstract class TextProcessingHandler {
 	// student code ...
-	private String request;
-	private String text;
 
 	String handle(String request, String text) {
 		// student code ...
-		this.request = request;
-		this.text = text;
-		return " bla bla";
+		Words req = new Words(request, text); 
+
+		return calculate(req);
 	}
 
 	// student code for setNextChain method
 	abstract void setNextChain(TextProcessingHandler nextChain);
-
-	abstract void calculate(TextProcessingHandler request);
+	abstract String calculate(Words request);
 
 	void showChain() {
 		// student code ...
 		System.out.println("FilterSmallWords --> CapitalizeCase --> ReverseWords");
 	}
 
+}
+
+class Words {
+	private String request;
+	private String text;
+	public Words(String request, String text) {
+		this.request = request;
+		this.text = text;
+	}
+	
 	public String getRequest() {
 		return request;
 	}
 
-	public void setRequest(String request) {
-		this.request = request;
-	}
-
 	public String getText() {
 		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
 	}
 }
 
@@ -125,7 +129,12 @@ abstract class WordFilterers extends TextProcessingHandler {
 class FilterSmallWords extends TextProcessingHandler {
 	private TextProcessingHandler nextInChain;
 	private int numberOfWords;
+	
+	private String conclution;
+	List<String> conclutionList = new ArrayList<>();
 
+	WordFilterers wordFilterers;
+	
 	public FilterSmallWords(int numberOfWords) {
 		this.numberOfWords = numberOfWords;
 	}
@@ -133,20 +142,20 @@ class FilterSmallWords extends TextProcessingHandler {
 	public void setNextChain(TextProcessingHandler nextChain) {
 
 		nextInChain = nextChain;
-
 	}
 
-	public void calculate(TextProcessingHandler request) {
+	public String calculate(Words request) {
 
-		if (request.getRequest() == "FilterSmallWords") {
-
-			System.out.print(request);
+		if (request.getRequest() == "FilterSmallWords") {	
+			
+			System.out.println("Conc List : " + wordFilterers.extractWords("test"));
 
 		} else {
 
 			nextInChain.calculate(request);
 
 		}
+		return conclution;
 	}
 }
 
@@ -160,17 +169,18 @@ class CapitalizeCase extends TextProcessingHandler {
 
 	}
 
-	public void calculate(TextProcessingHandler request) {
+	public String calculate(Words request) {
 
 		if (request.getRequest() == "CapitalizeCase") {
 
-			System.out.print(request);
+			System.out.println("=> Request : " + request);
 
 		} else {
 
 			nextInChain.calculate(request);
 
 		}
+		return request.getText();
 	}
 }
 
@@ -184,21 +194,23 @@ class ReverseWords extends TextProcessingHandler {
 
 	}
 
-	public void calculate(TextProcessingHandler request) {
+	public String calculate(Words request) {
 
 		if (request.getRequest() == "ReverseWords") {
 
-			System.out.print(request);
+			System.out.println("=> Request : " + request);
 
 		} else {
 
 			nextInChain.calculate(request);
 
 		}
+		return request.getText();
 	}
 }
 
 class TranslateToTurkish extends TextProcessingHandler {
+
 	private TextProcessingHandler nextInChain;
 
 	public void setNextChain(TextProcessingHandler nextChain) {
@@ -207,16 +219,17 @@ class TranslateToTurkish extends TextProcessingHandler {
 
 	}
 
-	public void calculate(TextProcessingHandler request) {
+	public String calculate(Words request) {
 
 		if (request.getRequest() == "TranslateToTurkish") {
 
-			System.out.print(request);
+			System.out.println("=> Request : " + request);
 
 		} else {
 
 			nextInChain.calculate(request);
 
 		}
+		return request.getText();
 	}
 }
