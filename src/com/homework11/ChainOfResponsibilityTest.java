@@ -131,7 +131,7 @@ class FilterSmallWords extends TextProcessingHandler {
 	private int numberOfWords;
 	
 	private String conclution;
-	List<String> conclutionList = new ArrayList<>();
+	List<String> conclutionList;
 
 	WordFilterers wordFilterers;
 	
@@ -147,8 +147,8 @@ class FilterSmallWords extends TextProcessingHandler {
 	public String calculate(Words request) {
 
 		if (request.getRequest() == "FilterSmallWords") {	
-			
-			System.out.println("Conc List : " + wordFilterers.extractWords("test"));
+			conclutionList = wordFilterers.extractWords(request.getText());
+			System.out.println("Conc List : " + " ");
 
 		} else {
 
@@ -159,10 +159,13 @@ class FilterSmallWords extends TextProcessingHandler {
 	}
 }
 
-// student code for CapitalizeCase class
+//student code for CapitalizeCase class
 class CapitalizeCase extends TextProcessingHandler {
 	private TextProcessingHandler nextInChain;
-
+ private String capitalizeCase;
+ 
+ StringBuilder capitalizedString = new StringBuilder();
+ 
 	public void setNextChain(TextProcessingHandler nextChain) {
 
 		nextInChain = nextChain;
@@ -172,15 +175,26 @@ class CapitalizeCase extends TextProcessingHandler {
 	public String calculate(Words request) {
 
 		if (request.getRequest() == "CapitalizeCase") {
+         
+         String str = request.getText();
+         
+         String[] splited = str.trim().split("\\s+");
 
-			System.out.println("=> Request : " + request);
+         for (String string : splited) {         
+             String s1 = string.substring(0, 1).toUpperCase();
+             String nameCapitalized = s1 + string.substring(1);
+
+             capitalizedString.append(nameCapitalized);
+             capitalizedString.append(" ");
+         }
+         System.out.println("CapitalizeCase  : " + capitalizedString.toString().trim());
 
 		} else {
 
 			nextInChain.calculate(request);
 
 		}
-		return request.getText();
+		return "CapitalizeCase  : " + capitalizedString.toString().trim();
 	}
 }
 
