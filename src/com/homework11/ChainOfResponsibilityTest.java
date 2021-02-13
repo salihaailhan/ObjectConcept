@@ -1,12 +1,29 @@
-package com.homework11;
-
 import java.util.*;
 import java.util.regex.*;
 
-public class ChainOfResponsibilityTest {
+public class HelloWorld{
 
-	public static void main(String[] args) {
+<<<<<<< HEAD
+=======
+     public static void main(String []args){
+        //			Input text:
+//			-----------
+//			I want to increase my grade using makeup homeworks in the Design Patters course
+//
+//
+//			Chain of Responsibility:
+//			------------------------
+//			FilterSmallWords --> CapitalizeCase --> ReverseWords
+//
+//
+//			Chain of Responsibility sample executions:
+//			------------------------------------------
+//			CapitalizeCase    	->    I Want To Increase My Grade Using Makeup Homeworks In The Design Patters Course 
+//			FilterSmallWords    ->    increase grade using makeup homeworks Design Patters course 
+//			TranslateToTurkish	->    null
+//			ReverseWords    	->    course Patters Design the in homeworks makeup using grade my increase to want I 
 
+>>>>>>> 0a298641ec27b5bd03622928830d30fd7cd23235
 		String text = "I want to increase my grade using makeup homeworks in the Design Patters course";
 		System.out.println("Input text:");
 		System.out.println("-----------");
@@ -37,13 +54,18 @@ public class ChainOfResponsibilityTest {
 		sampleExecution(chain, "FilterSmallWords", text);
 		sampleExecution(chain, "TranslateToTurkish", text);
 		sampleExecution(chain, "ReverseWords", text);
+<<<<<<< HEAD
 
 	}
 
 	static void sampleExecution(TextProcessingHandler chain, String request, String text) {
+=======
+     }
+     
+    static void sampleExecution(TextProcessingHandler chain, String request, String text) {
+>>>>>>> 0a298641ec27b5bd03622928830d30fd7cd23235
 		System.out.println(request + "    ->    " + chain.handle(request, text));
 	}
-
 }
 
 abstract class TextProcessingHandler {
@@ -111,7 +133,14 @@ abstract class WordFilterers extends TextProcessingHandler {
 class FilterSmallWords extends TextProcessingHandler {
 	private TextProcessingHandler nextInChain;
 	private int numberOfWords;
+<<<<<<< HEAD
 
+=======
+	
+	private String conclution;
+	List<String> conclutionList = new ArrayList<>();
+	
+>>>>>>> 0a298641ec27b5bd03622928830d30fd7cd23235
 	public FilterSmallWords(int numberOfWords) {
 		this.numberOfWords = numberOfWords;
 	}
@@ -140,7 +169,13 @@ class FilterSmallWords extends TextProcessingHandler {
 				}
 			}
 
+<<<<<<< HEAD
 			conclutionWords = capitalizedString.toString().trim();
+=======
+		if (request.getRequest() == "FilterSmallWords") {	
+
+			System.out.println("Conc List : " + request.getText());
+>>>>>>> 0a298641ec27b5bd03622928830d30fd7cd23235
 
 		} else {
 
@@ -155,7 +190,10 @@ class FilterSmallWords extends TextProcessingHandler {
 class CapitalizeCase extends TextProcessingHandler {
 
 	private TextProcessingHandler nextInChain;
-
+    private String capitalizeCase;
+    
+    StringBuilder capitalizedString = new StringBuilder();
+    
 	public void setNextChain(TextProcessingHandler nextChain) {
 
 		nextInChain = nextChain;
@@ -166,8 +204,23 @@ class CapitalizeCase extends TextProcessingHandler {
 
 		StringBuilder capitalizedString = new StringBuilder();
 		if (request.getRequest() == "CapitalizeCase") {
+            
+            String str = request.getText();
+            
+            String[] splited = str.trim().split("\\s+");
 
+<<<<<<< HEAD
 			String str = request.getText();
+=======
+            for (String string : splited) {         
+                String s1 = string.substring(0, 1).toUpperCase();
+                String nameCapitalized = s1 + string.substring(1);
+
+                capitalizedString.append(nameCapitalized);
+                capitalizedString.append(" ");
+            }
+            System.out.println("CapitalizeCase  : " + capitalizedString.toString().trim());
+>>>>>>> 0a298641ec27b5bd03622928830d30fd7cd23235
 
 			String[] splited = str.trim().split("\\s+");
 
@@ -175,9 +228,16 @@ class CapitalizeCase extends TextProcessingHandler {
 				String s1 = string.substring(0, 1).toUpperCase();
 				String nameCapitalized = s1 + string.substring(1);
 
+<<<<<<< HEAD
 				capitalizedString.append(nameCapitalized);
 				capitalizedString.append(" ");
 			}
+=======
+		}
+		return "CapitalizeCase  : " + capitalizedString.toString().trim();
+	}
+}
+>>>>>>> 0a298641ec27b5bd03622928830d30fd7cd23235
 
 			conclutionWords = capitalizedString.toString().trim();
 
